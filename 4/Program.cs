@@ -10,6 +10,8 @@ namespace AdventOfCode
             int totalPoints = 0;
             /* try */
             /* { */
+            var test = new System.Diagnostics.Stopwatch();
+            test.Start();
                 StreamReader sr = new StreamReader("input.txt");
                 line = sr.ReadLine();
                 while (line != null) 
@@ -20,12 +22,14 @@ namespace AdventOfCode
                 }
                 
                 sr.Close();
+                test.Stop();
             /* } */
             /* catch (Exception) */
             /* {} */
             int allCards = cards.Aggregate(0, (sum, kvPair) => sum + kvPair.Value);
             System.Console.WriteLine($"Part 1: {totalPoints}");
             System.Console.WriteLine($"Part 2: {allCards}");
+            System.Console.WriteLine($"Time: {test.ElapsedMilliseconds} ms");
         }
 
         static int ParseLine(string line)
