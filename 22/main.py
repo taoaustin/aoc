@@ -31,7 +31,7 @@ def place_bricks(unsorted_bricks):
                 unsorted_bricks[grid[r][c][0]].supports.add(b.name)
             grid[r][c] = (b.name, max_z + b.z_dist)
 
-def drop_brick(unsorted_bricks, b_name):
+def drop_brick(unsorted_bricks, b_name): #modified BFS
     removed_brick = unsorted_bricks[b_name]
     dropped = set()
     q = [b for b in removed_brick.supports if len(unsorted_bricks[b].supported_by) == 1]
@@ -53,4 +53,4 @@ silver = len(unsorted_bricks) - len(bricks_that_cant_be_removed)
 print(f"Part 1: {silver}")
 gold = sum(drop_brick(unsorted_bricks, b_name) for b_name in bricks_that_cant_be_removed)
 print(f"Part 2: {gold}")
-
+# relatively simple tree structure w/ pointers to parents & children. And modified BFS
