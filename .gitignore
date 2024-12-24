@@ -1,6 +1,5 @@
 bin/
 obj/
-*.csproj
 *.jar
 kls-classpath
 .gradle/
