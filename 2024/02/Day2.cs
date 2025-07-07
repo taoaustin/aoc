@@ -6,23 +6,14 @@ namespace AdventOfCode2024
   {
     public static (int, int) Solve()
     {
-      string[] file = File.ReadAllLines("02/input.txt");
+      string[] file = Utils.ReadFileLines(2);
       int safe = 0;
       int safeDamp = 0;
       foreach (string line in file)
       {
-
         var nums = line.Split().Select(int.Parse).ToList();
-
-
-        if (IsValid([.. nums]))
-        {
-          safe++;
-        }
-        if (IsValid([.. nums], true))
-        {
-          safeDamp++;
-        }
+        if (IsValid([.. nums])) safe++;
+        if (IsValid([.. nums], true)) safeDamp++;
       }
       return (safe, safeDamp);
     }
@@ -39,14 +30,8 @@ namespace AdventOfCode2024
       {
         if ((nums[i] >= nums[i + 1]) || (Math.Abs(nums[i] - nums[i + 1]) > 3))
         {
-          if (dampen)
-          {
-            return IsValid(nums.RemoveAt(i), false) || IsValid(nums.RemoveAt(i + 1), false);
-          }
-          else
-          {
-            return false;
-          }
+          if (dampen) return IsValid(nums.RemoveAt(i), false) || IsValid(nums.RemoveAt(i + 1), false);
+          else return false;
         }
       }
       return true;
@@ -58,14 +43,8 @@ namespace AdventOfCode2024
       {
         if ((nums[i] <= nums[i + 1]) || (Math.Abs(nums[i] - nums[i + 1]) > 3))
         {
-          if (dampen)
-          {
-            return IsValid(nums.RemoveAt(i), false) || IsValid(nums.RemoveAt(i + 1), false);
-          }
-          else
-          {
-            return false;
-          }
+          if (dampen) return IsValid(nums.RemoveAt(i), false) || IsValid(nums.RemoveAt(i + 1), false);
+          else return false;
         }
       }
       return true;

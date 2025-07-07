@@ -4,7 +4,7 @@ namespace AdventOfCode2024
   {
     public static (int, int) Solve()
     {
-      string[] file = File.ReadAllLines("01/input.txt");
+      string[] file = Utils.ReadFileLines(1);
       int[] left = new int[file.Length];
       int[] right = new int[file.Length];
       for (int i = 0; i < file.Length; i++)
