@@ -11,13 +11,14 @@ namespace AdventOfCode2024
     public static (long, long) Solve()
     {
       string[] lines = Utils.ReadFileLines(7, false);
-      Operation[] opList = [Operation.Multiply, Operation.Add];
+      Operation[] opList1 = [Operation.Multiply, Operation.Add];
+      Operation[] opList2 = [Operation.Multiply, Operation.Add, Operation.Concat];
       long part1 = 0;
       long part2 = 0;
       foreach (var item in lines)
       {
         var (result, operands) = ParseLineValues(item);
-        var opCombinations = GetPermutationsWithRept(opList, operands.Length - 1);
+        var opCombinations = GetPermutationsWithRept(opList1, operands.Length - 1);
         foreach (var opComb in opCombinations)
         {
           var ok = Calculate(result, new Stack<long>(operands.Reverse()), new Stack<Operation>(opComb));
@@ -27,8 +28,7 @@ namespace AdventOfCode2024
             break;
           }
         }
-        opList = [.. opList, Operation.Concat];
-        opCombinations = GetPermutationsWithRept(opList, operands.Length - 1);
+        opCombinations = GetPermutationsWithRept(opList2, operands.Length - 1);
         foreach (var opComb in opCombinations)
         {
           var ok = Calculate(result, new Stack<long>(operands.Reverse()), new Stack<Operation>(opComb));
