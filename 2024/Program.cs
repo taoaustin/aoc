@@ -9,7 +9,8 @@
       // var result = Day3.Solve();
       // var result = Day4.Solve();
       // var result = Day5.Solve();
-      var result = Day6.Solve();
+      // var result = Day6.Solve();
+      var result = Day7.Solve();
       Console.WriteLine(result);
     }
   }
