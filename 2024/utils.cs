@@ -38,7 +38,7 @@ namespace AdventOfCode2024
       return rotated;
     }
 
-    static T[,] Convert2DArrToMatrix<T>(T[][] arr2D)
+    public static T[,] Convert2DArrToMatrix<T>(T[][] arr2D)
     {
       if (arr2D == null || arr2D.Length == 0)
         throw new ArgumentException("Invalid 2D array");
@@ -59,6 +59,17 @@ namespace AdventOfCode2024
         }
       }
       return rectArray;
+    }
+
+    public static bool InRange<T>((int, int) coord, T[,] matrix)
+    {
+      return coord.Item1 >= 0 && coord.Item1 < matrix.GetLength(0) && coord.Item2 >= 0 && coord.Item2 < matrix.GetLength(1);
+    }
+
+    public static (int, int)[] AdjacentCoords((int, int) coord)
+    {
+      var (a, b) = coord;
+      return [(a + 1, b), (a - 1, b), (a, b + 1), (a, b - 1)];
     }
 
     static string GetInputFile(int i, bool test = false)
