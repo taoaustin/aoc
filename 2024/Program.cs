@@ -14,7 +14,10 @@
       // var result = Day8.Solve();
       // var result = Day9.Solve();
       // var result = Day10.Solve();
-      var result = Day11.Solve();
+      // var result = Day11.Solve();
+      // var result = Day12.Solve();
+      var result = Day13.Solve();
+
       Console.WriteLine(result);
     }
   }

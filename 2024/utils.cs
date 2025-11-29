@@ -72,6 +72,32 @@ namespace AdventOfCode2024
       return [(a + 1, b), (a - 1, b), (a, b + 1), (a, b - 1)];
     }
 
+    public static (int, int)[] DiagonallyAdjacentCoords((int, int) coord)
+    {
+      var (a, b) = coord;
+      return [(a + 1, b + 1), (a + 1, b - 1), (a - 1, b + 1), (a - 1, b - 1)];
+    }
+
+    public static bool IsDiagonallyAdjacent((int, int) c1, (int, int) c2)
+    {
+      return DiagonallyAdjacentCoords(c1).Contains(c2);
+    }
+
+    public static List<(T, T)> GetPairs<T>(List<T> coords)
+    {
+      var result = new List<(T, T)>();
+      for (int i = 0; i < coords.Count; ++i)
+        for (int j = i + 1; j < coords.Count; ++j)
+          result.Add((coords[i], coords[j]));
+      return result;
+    }
+
+    public static bool IsAlmostEquals(double x, double y, double threshold)
+    {
+      double diff = Math.Abs(y - x);
+      return diff < threshold;
+    }
+
     static string GetInputFile(int i, bool test = false)
     {
       return $"{i:D2}/input{(test ? "_test" : "")}.txt";
